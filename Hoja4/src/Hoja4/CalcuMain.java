@@ -22,6 +22,7 @@ public class CalcuMain {
         System.out.println("1.Vector\n2.ArrayList\n3.Lista simple\n4.Lista doble\n5.Lista circular\n");
         Scanner leer = new Scanner(System.in);
         int opcion = leer.nextInt();
+        //Se elige el tipo de implementacion que se desea a partir del patron de diseño
         if (opcion==1){
             GeneratedStack=ffactory.getStack("Vector");
         }
