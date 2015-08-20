@@ -21,23 +21,37 @@ public class CalcuMain {
         System.out.println("BIENVENIDO A NUESTRA CALCULADORA POSTFIX.\nIngrese la opcion deseada:\n");
         System.out.println("1.Vector\n2.ArrayList\n3.Lista simple\n4.Lista doble\n5.Lista circular\n");
         Scanner leer = new Scanner(System.in);
-        int opcion = leer.nextInt();
-        //Se elige el tipo de implementacion que se desea a partir del patron de diseño
-        if (opcion==1){
-            GeneratedStack=ffactory.getStack("Vector");
-        }
-        else if(opcion==2){
-            GeneratedStack=ffactory.getStack("ArrayList");   
-        }
-        else if(opcion==3){
-            GeneratedStack=ffactory.getStack("singlyLinkedList");   
-        }
-        else if(opcion==4){
-            GeneratedStack=ffactory.getStack("doubleLinkedList");   
-        }
-        else{
-            GeneratedStack=ffactory.getStack("circular");   
-        }
+		String opcion = "";
+		int var = 0;
+		
+		do
+		{
+			var = 0;
+			opcion = leer.nextLine();
+			if(!opcion.equals("1") && !opcion.equals("2") && !opcion.equals("3") && !opcion.equals("4") && !opcion.equals("5"))
+			{
+				System.out.println("El dato que ha ingresado es incorrecto, ingrese un numero del 1-5.");
+				var = 1;
+			}
+		}while(var == 1);
+		
+		switch(opcion){
+			case "1":
+				GeneratedStack=ffactory.getStack("Vector");
+				break;
+			case "2":
+				GeneratedStack=ffactory.getStack("ArrayList");
+				break;
+			case "3":
+				GeneratedStack=ffactory.getStack("singlyLinkedList"); 
+				break;
+			case "4":
+				GeneratedStack=ffactory.getStack("doubleLinkedList");
+				break;
+			default:
+				GeneratedStack=ffactory.getStack("circular"); 
+				break;
+		}
 
 		try{
             miCalcu.setStack(GeneratedStack);
@@ -53,6 +67,23 @@ public class CalcuMain {
             	miCalcu.meterVector();
             	if(miCalcu.calcularVector()){
                 	System.out.println("El resultado de la operacion es: "+miCalcu.getResultado());
+					switch(opcion){
+						case "1":
+							System.out.println("Ha utilizado el metodo Vector.");
+							break;
+						case "2":
+							System.out.println("Ha utilizado el metodo ArrayList");
+							break;
+						case "3":
+							System.out.println("Ha utilizado el metodo SinglyLinkedList"); 
+							break;
+						case "4":
+							System.out.println("Ha utilizado el metodo DoubleLinkedList");
+							break;
+						default:
+							System.out.println("Ha utilizado el metodo Circular"); 
+							break;
+					}
             	}
             	else {System.out.println("La operacion es incorrecta y no se puede realizar.");}
            	}
