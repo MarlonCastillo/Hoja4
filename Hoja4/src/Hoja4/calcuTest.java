@@ -21,7 +21,7 @@ public class CalcuTest {
         String linea = "1 2 + 4 * 3 +";
         miCalcu.setString(linea);
     }
-//test para el metodo calcularVector
+//test para el metodo calcularVector 
     @Test
     public void calcularVector(){
         miCalcu.meterVector();
